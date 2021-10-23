@@ -1,5 +1,24 @@
+USE employee_trackerDB;
+
+INSERT INTO department (department_name)
+VALUES
+('Sales'),
+('Engineer'),
+('Finance'),
+('Legal');
+
+INSERT INTO role (title)
+VALUES
+('Sales Lead'),
+('Salesperson'),
+('Lead Engineer'),
+('Software Engineer'),
+('Accountant'),
+('Legal Team Lead'),
+('Lawyer');
+
 INSERT INTO employees
-(first_name, last_name, title, department, salary, manager)
+(first_name, last_name, title, department_name, salary, manager_name)
 VALUES
 ('John', 'Doe', 'Sales Lead', 'Sales', '100000', 'Ashley Rodriguez')
 ('Mike', 'Chan', 'Salesperson', 'Sales', '80000', 'John Doe')
