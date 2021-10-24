@@ -17,8 +17,7 @@ VALUES
 ('Legal Team Lead'),
 ('Lawyer');
 
-INSERT INTO employees
-(first_name, last_name, title, department_name, salary, manager_name)
+INSERT INTO employees (first_name, last_name, title, department_name, salary, manager_name)
 VALUES
 ('John', 'Doe', 'Sales Lead', 'Sales', '100000', 'Ashley Rodriguez')
 ('Mike', 'Chan', 'Salesperson', 'Sales', '80000', 'John Doe')

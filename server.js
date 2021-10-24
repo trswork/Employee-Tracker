@@ -53,10 +53,10 @@ function runPrompt() {
           allEmployees();
           break;
       case "View All Departments":
-          viewAllDepartments();
+          allDepartments();
           break;
       case "View All Roles":
-          viewAllRoles();
+          viewRoles();
           break;
       case "Add Employee":
           addEmployee();
@@ -78,5 +78,31 @@ function runPrompt() {
           break;
   }
 });
+}
+
+function allEmployees() {
+  console.log("\nViewing all employees...\n");
+  connection.query(
+      "SELECT employee.id, first_name AS FIRSTNAME, last_name AS LASTNAME, title AS POSITION, name AS DEPARTMENT, salary as SALARY FROM employee INNER JOIN role ON employee.role_id = role.id INNER JOIN department ON role.department_id = department.id;", (err, res) => {
+          if (err) throw err;
+          console.table('ALL EMPLOYEES', res);
+          runPrompt();
+      });
+}
+
+function allDepartments() {
+  connection.query("SELECT id, name AS DEPARTMENT FROM department", (err, res) => {
+    if (err) throw err;
+    console.table('\nALL DEPARTMENTS\n', res);
+    runPrompt();
+  });
+}
+
+function viewRoles() {
+  connection.query("SELECT role.id, title AS ROLE, SALARY, name AS DEPARTMENT FROM role LEFT JOIN department ON department_id = department.id ORDER BY department.name", (err, res) => {
+    if (err) throw err;
+    console.table('ALL ROLES', res);
+    runPrompt();
+  });
 }
 
